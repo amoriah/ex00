@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from 'react';
+import { Outlet } from 'react-router';
+import { StyleApp } from './App.styles';
+import { NavBar } from './components/NavBar/NavBar';
 
-function App() {
+export type ContextType = {
+  color: string;
+  setColor: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export const ThemeContext = createContext<ContextType>({
+  color: '',
+  setColor: () => '',
+});
+
+export const App = () => {
+  const [color, setColor] = useState('grey');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeContext.Provider value={{ color, setColor }}>
+      <StyleApp>
+        <NavBar />
+        <Outlet />
+      </StyleApp>
+    </ThemeContext.Provider>
   );
-}
-
-export default App;
+};

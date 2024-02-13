@@ -40,7 +40,10 @@ export const FormPage = () => {
   };
 
   const formFilledHandler = (key: string, value: string) => {
-    if (value.length > 25) {
+    if (key === 'address' && value.length > 35) {
+      alert('Too long string. Try again.');
+      clear();
+    } else if (key !== 'address' && value.length > 25) {
       alert('Too long string. Try again.');
       clear();
     } else {
@@ -63,6 +66,7 @@ export const FormPage = () => {
               name="companyName"
               value={data.companyName}
               placeholder="OOO Oduvanchick"
+              required
               onChange={e => formFilledHandler(e.target.name, e.target.value)}
             />
           </Style.Field>
@@ -74,6 +78,7 @@ export const FormPage = () => {
               name="fullName"
               value={data.fullName}
               placeholder="Vasily Gubkin"
+              required
               onChange={e => formFilledHandler(e.target.name, e.target.value)}
             />
           </Style.Field>
@@ -85,16 +90,18 @@ export const FormPage = () => {
               name="position"
               value={data.position}
               placeholder="Frontend-developer"
+              required
               onChange={e => formFilledHandler(e.target.name, e.target.value)}
             />
           </Style.Field>
           <Style.Field>
             <Style.Label htmlFor="address">Address</Style.Label>
-            <Style.Input
-              type="text"
+
+            <Style.Textarea
               id="address"
               name="address"
               value={data.address}
+              required
               placeholder="Salekhard, Lenin St.6"
               onChange={e => formFilledHandler(e.target.name, e.target.value)}
             />
@@ -107,6 +114,7 @@ export const FormPage = () => {
               name="email"
               value={data.email}
               placeholder="your-email@test.test"
+              required
               onChange={e => formFilledHandler(e.target.name, e.target.value)}
             />
           </Style.Field>
@@ -118,6 +126,7 @@ export const FormPage = () => {
               name="phone"
               value={data.phone}
               placeholder="89990000000"
+              required
               onChange={e => formFilledHandler(e.target.name, e.target.value)}
             />
           </Style.Field>
@@ -129,6 +138,7 @@ export const FormPage = () => {
               name="website"
               value={data.website}
               placeholder="https://www.site.com"
+              required
               onChange={e => formFilledHandler(e.target.name, e.target.value)}
             />
           </Style.Field>

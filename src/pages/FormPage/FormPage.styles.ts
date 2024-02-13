@@ -35,6 +35,13 @@ export const Input = styled.input`
 }
 `;
 
+export const Textarea = styled.textarea`
+  width: 300px;
+  height: 40px;
+  border-radius: 6px;
+  padding: 6px 8px;
+`;
+
 export const ButtonBox = styled.div`
   display: flex;
   width: 100%;

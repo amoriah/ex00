@@ -1,7 +1,10 @@
 import { createContext, useState } from 'react';
+import { useLocation } from 'react-router';
 import { Outlet } from 'react-router';
 import { StyleApp } from './App.styles';
 import { NavBar } from './components/NavBar/NavBar';
+import { Span } from './pages/DatePage/DatePage.styles';
+
 import { ContextType, IFormData } from './types/types';
 
 const emptyData = {
@@ -27,6 +30,7 @@ export const App = () => {
   const [color, setColor] = useState('grey');
   const [data, setData] = useState<IFormData>(emptyData);
   const [isFormFilled, setIsFormFilled] = useState(false);
+  const history = useLocation();
 
   return (
     <ThemeContext.Provider
@@ -35,6 +39,7 @@ export const App = () => {
       <StyleApp>
         <NavBar />
         <Outlet />
+        {history.key === 'default' && <Span>Choose the exersices</Span>}
       </StyleApp>
     </ThemeContext.Provider>
   );

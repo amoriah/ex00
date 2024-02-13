@@ -39,7 +39,7 @@ export const App = () => {
       <StyleApp>
         <NavBar />
         <Outlet />
-        {history.key === 'default' && <Span>Choose the exersices</Span>}
+        {history.key === 'default' && <Span>Choose an exercise</Span>}
       </StyleApp>
     </ThemeContext.Provider>
   );

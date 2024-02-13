@@ -28,6 +28,11 @@ export const Input = styled.input`
   padding: 6px 8px;
   font-size: 1.2em;
   color: grey;
+
+  &::placeholder {
+  color: rgba(230, 230, 230);
+  font-size: 0.8em;
+}
 `;
 
 export const ButtonBox = styled.div`

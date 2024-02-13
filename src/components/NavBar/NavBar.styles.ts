@@ -9,14 +9,10 @@ export const StyleNavigation = styled.ul`
     padding: 0 1.5em;
     font-size: 1.5em;
     letter-spacing: 0.2rem;
-    color: grey;
 
     a {
       text-decoration: none;
-    }
-
-    a:visited {
-      color: inherit;
+      color: grey;
     }
   }
 `;

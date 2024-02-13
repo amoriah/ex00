@@ -1,44 +1,35 @@
 import { useContext } from 'react';
-import { ContextType, ThemeContext } from '../../App';
-import { IFormData } from '../../types/types';
-import {
-  FrontSide,
-  BackSide,
-  Container,
-  Info,
-  ButtonBox,
-  Button,
-} from './Cards.styles';
-
+import { ThemeContext } from '../../App';
+import { ContextType } from '../../types/types';
+import * as Style from './Cards.styles';
 interface CardProps {
-  data: IFormData;
   handle: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({ data, handle }) => {
-  const { color } = useContext<ContextType>(ThemeContext);
+export const Card: React.FC<CardProps> = ({ handle }) => {
+  const { color, data } = useContext<ContextType>(ThemeContext);
   const { address, companyName, email, fullName, phone, position, website } =
     data;
   return (
-    <Container>
-      <FrontSide color={color }>
-        <h3>{companyName}</h3>
-        <span>{fullName}</span>
-        <span>{position}</span>
-      </FrontSide>
-      <BackSide color={color }>
-        <Info>
+    <Style.Container>
+      <Style.FrontSide color={color}>
+        <Style.Title>{companyName}</Style.Title>
+        <Style.Span>{fullName}</Style.Span>
+        <Style.Span>{position}</Style.Span>
+      </Style.FrontSide>
+      <Style.BackSide color={color}>
+        <Style.Info>
           <li>{address}</li>
           <li>{email}</li>
           <li>{phone}</li>
           <li>{website}</li>
-        </Info>
-      </BackSide>
-      <ButtonBox>
-        <Button type='button' onClick={() => handle()} color={color }>
+        </Style.Info>
+      </Style.BackSide>
+      <Style.ButtonBox>
+        <Style.Button type="button" onClick={() => handle()} color={color}>
           change
-        </Button>
-      </ButtonBox>
-    </Container>
+        </Style.Button>
+      </Style.ButtonBox>
+    </Style.Container>
   );
 };

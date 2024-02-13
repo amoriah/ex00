@@ -19,6 +19,10 @@ export const FrontSide = styled.div<{ color: string }>`
   flex-direction: column;
 `;
 
+export const Title = styled.h3`
+  word-wrap: break-word;
+`;
+
 export const BackSide = styled.div<{ color: string }>`
   width: 300px;
   height: 120px;
@@ -43,6 +47,8 @@ export const Info = styled.ul`
   list-style-type: square;
 
   li {
+    width: 90%;
+    word-wrap: break-word;
     margin-left: 1em;
   }
 `;
@@ -52,6 +58,8 @@ export const ButtonBox = styled.div`
   width: 100%;
   justify-content: center;
 `;
+
+
 
 export const Button = styled.button<{ color: string }>`
   margin-top: 2em;
@@ -64,4 +72,10 @@ export const Button = styled.button<{ color: string }>`
   &:active {
     filter: brightness(85%);
   }
+`;
+
+export const Span = styled.span`
+  width: 80%;
+  word-wrap: break-word;
+  text-align: center;
 `;

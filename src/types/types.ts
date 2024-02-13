@@ -17,3 +17,12 @@ export interface IFormData {
   position: string;
   website: string;
 }
+
+export type ContextType = {
+  color: string;
+  setColor: React.Dispatch<React.SetStateAction<string>>;
+  data: IFormData;
+  setData: React.Dispatch<React.SetStateAction<IFormData>>;
+  isFormFilled: boolean;
+  setIsFormFilled: React.Dispatch<React.SetStateAction<boolean>>;
+};

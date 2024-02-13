@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import { ContextType, ThemeContext } from '../../App';
-
+import { ThemeContext } from '../../App';
 import { Container, Button, Text } from './ButtonPage.styles';
+import { ContextType } from '../../types/types';
 
 export const ButtonPage = () => {
   const { color, setColor } = useContext<ContextType>(ThemeContext);

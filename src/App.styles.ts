@@ -8,3 +8,4 @@ export const StyleApp = styled.div`
   font-family: 'Arial', sans-serif;
   letter-spacing: 0.2rem;
 `;
+

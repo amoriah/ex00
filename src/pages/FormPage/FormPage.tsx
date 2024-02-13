@@ -1,31 +1,14 @@
-import { useContext, useState } from 'react';
-import {
-  Button,
-  ButtonBox,
-  Container,
-  Field,
-  Form,
-  Input,
-  Label,
-} from './FormPage.styles';
-import { IFormData } from '../../types/types';
+import { useContext } from 'react';
+import * as Style from './FormPage.styles';
+import { ContextType } from '../../types/types';
 import { Card } from '../../components/Cards/Card';
-import { ContextType, ThemeContext } from '../../App';
+import { ThemeContext } from '../../App';
 
 export const FormPage = () => {
-  const { color } = useContext<ContextType>(ThemeContext);
-  const [isFormFilled, setIsFormFilled] = useState(false);
-  const [data, setData] = useState<IFormData>({
-    address: '',
-    companyName: '',
-    email: '',
-    fullName: '',
-    phone: '',
-    position: '',
-    website: '',
-  });
+  const { color, data, setData, isFormFilled, setIsFormFilled } =
+    useContext<ContextType>(ThemeContext);
 
-  const submit: React.FormEventHandler<HTMLFormElement> = async (event) => {
+  const submit: React.FormEventHandler<HTMLFormElement> = async event => {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
     const { address, companyName, email, fullName, phone, position, website } =
@@ -56,46 +39,106 @@ export const FormPage = () => {
     });
   };
 
+  const formFilledHandler = (key: string, value: string) => {
+    if (value.length > 25) {
+      alert('Too long string. Try again.');
+      clear();
+    } else {
+      setData({ ...data, [key]: value });
+    }
+  };
+
   return (
-    <Container>
+    <Style.Container>
       {isFormFilled ? (
-        <Card data={data} handle={clear} />
+        <Card handle={clear} />
       ) : (
-        <Form onSubmit={submit} color={color}>
+        <Style.Form onSubmit={submit} color={color}>
           <h2> Create your business card </h2>
-          <Field>
-            <Label htmlFor='companyName'>Company name</Label>
-            <Input type='text' id='companyName' name='companyName' />
-          </Field>
-          <Field>
-            <Label htmlFor='fullName'>Full name</Label>
-            <Input type='text' id='fullName' name='fullName' />
-          </Field>
-          <Field>
-            <Label htmlFor='position'>Position</Label>
-            <Input type='text' id='position' name='position' />
-          </Field>
-          <Field>
-            <Label htmlFor='address'>Address</Label>
-            <Input type='text' id='address' name='address' />
-          </Field>
-          <Field>
-            <Label htmlFor='email'>Email</Label>
-            <Input type='email' id='email' name='email' />
-          </Field>
-          <Field>
-            <Label htmlFor='phone'>Phone</Label>
-            <Input type='tel' id='phone' name='phone' />
-          </Field>
-          <Field>
-            <Label htmlFor='website'>Website</Label>
-            <Input type='url' id='website' name='website' />
-          </Field>
-          <ButtonBox>
-            <Button type='submit' color={color}>submit</Button>
-          </ButtonBox>
-        </Form>
+          <Style.Field>
+            <Style.Label htmlFor="companyName">Company name</Style.Label>
+            <Style.Input
+              type="text"
+              id="companyName"
+              name="companyName"
+              value={data.companyName}
+              placeholder="OOO Oduvanchick"
+              onChange={e => formFilledHandler(e.target.name, e.target.value)}
+            />
+          </Style.Field>
+          <Style.Field>
+            <Style.Label htmlFor="fullName">Full name</Style.Label>
+            <Style.Input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={data.fullName}
+              placeholder="Vasily Gubkin"
+              onChange={e => formFilledHandler(e.target.name, e.target.value)}
+            />
+          </Style.Field>
+          <Style.Field>
+            <Style.Label htmlFor="position">Position</Style.Label>
+            <Style.Input
+              type="text"
+              id="position"
+              name="position"
+              value={data.position}
+              placeholder="Frontend-developer"
+              onChange={e => formFilledHandler(e.target.name, e.target.value)}
+            />
+          </Style.Field>
+          <Style.Field>
+            <Style.Label htmlFor="address">Address</Style.Label>
+            <Style.Input
+              type="text"
+              id="address"
+              name="address"
+              value={data.address}
+              placeholder="Salekhard, Lenin St.6"
+              onChange={e => formFilledHandler(e.target.name, e.target.value)}
+            />
+          </Style.Field>
+          <Style.Field>
+            <Style.Label htmlFor="email">Email</Style.Label>
+            <Style.Input
+              type="email"
+              id="email"
+              name="email"
+              value={data.email}
+              placeholder="your-email@test.test"
+              onChange={e => formFilledHandler(e.target.name, e.target.value)}
+            />
+          </Style.Field>
+          <Style.Field>
+            <Style.Label htmlFor="phone">Phone</Style.Label>
+            <Style.Input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={data.phone}
+              placeholder="89990000000"
+              onChange={e => formFilledHandler(e.target.name, e.target.value)}
+            />
+          </Style.Field>
+          <Style.Field>
+            <Style.Label htmlFor="website">Website</Style.Label>
+            <Style.Input
+              type="url"
+              id="website"
+              name="website"
+              value={data.website}
+              placeholder="https://www.site.com"
+              onChange={e => formFilledHandler(e.target.name, e.target.value)}
+            />
+          </Style.Field>
+          <Style.ButtonBox>
+            <Style.Button type="submit" color={color}>
+              submit
+            </Style.Button>
+          </Style.ButtonBox>
+        </Style.Form>
       )}
-    </Container>
+    </Style.Container>
   );
 };

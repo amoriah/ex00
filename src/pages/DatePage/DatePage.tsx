@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Button, Container, Data, Span } from './DatePage.styles';
-import { TimeData } from '../../types/types';
-import { ContextType, ThemeContext } from '../../App';
+import { ContextType, TimeData } from '../../types/types';
+import {  ThemeContext } from '../../App';
 
 export const DatePage = () => {
   const { color } = useContext<ContextType>(ThemeContext);

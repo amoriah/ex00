@@ -18,4 +18,3 @@ npm start
 
 ![form](./img/form.png)<br>
 
-![card](./img/card.png)<br>

@@ -12,8 +12,10 @@ npm start
 
 ## Картиночки
 
-![button]('./img/button.png')<br>
+![button](./img/button.png)<br>
 
-![date]('./img/date.png')<br>
+![date](./img/date.png)<br>
 
-![form]('./img/form.png')<br>
+![form](./img/form.png)<br>
+
+![card](./img/card.png)<br>

@@ -17,5 +17,3 @@ npm start
 ![date]('./img/date.png')<br>
 
 ![form]('./img/form.png')<br>
-
-![card]('./img/card.png')<br>

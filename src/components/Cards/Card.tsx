@@ -27,7 +27,7 @@ export const Card: React.FC<CardProps> = ({ handle }) => {
       </Style.BackSide>
       <Style.ButtonBox>
         <Style.Button type="button" onClick={() => handle()} color={color}>
-          change
+          clean
         </Style.Button>
       </Style.ButtonBox>
     </Style.Container>
